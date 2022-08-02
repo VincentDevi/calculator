@@ -102,65 +102,123 @@ const getOperation = () =>{
         operation.appendChild(attriOperation);
     }
 }
-getDivision();
-addButtonNumber();
-getOperation();
+// getDivision();
+// addButtonNumber();
+// getOperation();
 
 
 
-const buttonsList = document.querySelectorAll("input");
-liste =[];
-liste1=[];
-for (const button of buttonsList) {
-    let a =0;
-        button.addEventListener('click',event =>{
-            a=event.target.value;
+// const buttonsList = document.querySelectorAll("input");
+// liste =[];
+// liste1=[];
+// for (const button of buttonsList) {
+//     let a =0;
+//         button.addEventListener('click',event =>{
+//             a=event.target.value;
 
-            let b = event.target;
-            if(b.hasAttribute('data_number')){
-                liste1.push(a);
-                console.log(liste1);
-            }
-            else{
-                let mmm = Number( liste1.join("") );
-                console.log(mmm);
-                liste.push(mmm);
-                console.log(liste);
-                liste1 =[];
-                console.log(liste1);
-                let ope = a;
-                console.log(ope);
-                if (liste.length>1){
-                    if( ope==="+"){
-                    let result= liste[0] +liste[1];
-                    console.log(result);
-                    }
-                    else if(ope ==="-"){
-                        let result = liste[0]-liste[1];
-                        console.log(result);
+//             let b = event.target;
+//             if(b.hasAttribute('data_number')){
+//                 liste1.push(a);
+//                 console.log(liste1);
+//             }
+//             else{
+//                 let mmm = Number( liste1.join("") );
+//                 console.log(mmm);
+//                 liste.push(mmm);
+//                 console.log(liste);
+//                 liste1 =[];
+//                 console.log(liste1);
+//                 let ope = a;
+//                 console.log(ope);
+//                 if (liste.length>1){
+//                     if( ope==="+"){
+//                     let result= liste[0] +liste[1];
+//                     console.log(result);
+//                     }
+//                     else if(ope ==="-"){
+//                         let result = liste[0]-liste[1];
+//                         console.log(result);
 
-                    }
-                    else if(ope ==="/"){
-                        let result=liste[0]/liste[1];
-                        console.log(result);
+//                     }
+//                     else if(ope ==="/"){
+//                         let result=liste[0]/liste[1];
+//                         console.log(result);
 
-                    }
-                    else if (ope==="*"){
-                        let result=liste[0]*liste[1];
-                        console.log(result);
+//                     }
+//                     else if (ope==="*"){
+//                         let result=liste[0]*liste[1];
+//                         console.log(result);
 
-                    }
-                    else{
-                        let result = (liste[0]*liste[1])/100;
-                        console.log(result);
+//                     }
+//                     else{
+//                         let result = (liste[0]*liste[1])/100;
+//                         console.log(result);
 
-                    }
-                }   
-            }
+//                     }
+//                 }   
+//             }
 
             
         
-        })
+//         })
+
+// }
+// const buttonList = document.querySelectorAll("input");
+// let result= "";
+// for (const butt of buttonList) {
+//     butt.addEventListener('click',event =>{
+//         let val = event.target.value;
+//         if (val === "="){
+//             computeResult(result);
+//             console.log(result);
+//         }
+//         else{
+//             result = result + val;
+//             console.log(result);
+//         }
+//     })
+// }
+
+
+// function computeResult(str){
+
+//     return str;
+//   }
+
+function computeResult(str){
+    return Function('return ' + str)()
+  }
+  
+  
+
+const buttonList = document.querySelectorAll('button');
+const screen = document.querySelector('span');
+let para ="";
+for (const aButton of buttonList) {
+    aButton.addEventListener('click', event =>{
+        let buttonValue = event.target.getAttribute('data__value');
+        if(buttonValue==="="){
+            console.log(computeResult(para))
+        }
+        else if(buttonValue==="del"){
+            para.slice(0, -1);
+        }
+        else{
+        console.log(buttonValue);
+        para = para+buttonValue;
+        screen.textContent = para;
+        console.log(para);
+        }
+
+    })
 
 }
-console.log(liste);
+
+// to erase last element of String
+// .slice(0 , -1)
+
+
+
+  const a = '1+9/2'
+  
+  console.log(computeResult(a)) // Should display 10

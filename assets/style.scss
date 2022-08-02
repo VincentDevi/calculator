@@ -1,54 +1,58 @@
 @import '_reset.scss';
-
+@import '_variables.scss';
 
 body{
-    width: 100vh;
     height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    
 }
 .calculator{
-    width: 500px;
-    height: 750px;
+    width: $width;
+    height: $height;
+    display: flex;
+    flex-direction: column;
+
     &__screen{
-        background-color: #A5C9CA;
-        height: 150px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
+        background-color: $secondaryColor;
+        width: $screenW;
+        height: $screenH;
     }
+    
 }
+
 .keys{
     display: flex;
     flex-direction: row;
-    width: 500px;
-    height: 600px;
-    &__operation{
-        height: 600px;
-        width: 100px;
-        justify-content: space-evenly;
-        order: 1;
-        display: flex;
-        flex-direction: column;
-        
-        
-    }
-    &__number{
-        flex-basis: 400px;
-        
-        &__row{
-            height: 20%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-
-        }
+    &__but{
+        height: $keysHeight;
+        width: $keysWidth;
     }
 }
-input{
-    background-color: #2C3333;
-    color: #A5C9CA;
-    height: 100%;
-    width: 100%;
+.operation{
+    height: $operationHeight;
+    width: $operationWidth;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    &__row{
+        height: 20%;
+        width: 100%;
+        background-color: $thirdsColor;
+    }
+}
+.row{
+    
+    height: $rowHeight;
+    display: flex;
+    &__op{
+        background-color: $thirdsColor;
+    }
+    
+}
+button{
+    background-color: $primaryColor;
+    width: $butWidth;
 }
