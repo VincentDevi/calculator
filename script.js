@@ -203,7 +203,7 @@ function computeResult(str){
   }
   
   
-
+const fontList =["Alegreya Sans SC', sans-serif","'Bad Script', cursive", "'Bebas Neue', cursive", "'Chakra Petch', sans-serif","'Mouse Memoirs', sans-serif", "'Roboto', sans-serif", "'Square Peg', cursive","'Uchen', serif"];
 const buttonList = document.querySelectorAll('button');
 const screen = document.querySelector('span');
 const screenResult = document.querySelector('.calculator__screen__result')
@@ -211,6 +211,17 @@ let para ="";
 let calculDisplayed="";
 for (const aButton of buttonList) {
     aButton.addEventListener('click', event =>{
+        let newList=[];
+        for (const i of buttonList) {
+            let fontRand = Math.floor(Math.random()*fontList.length);
+            i.style.fontFamily = fontList[fontRand];
+            i.style.color = backColor();
+            i.style.backgroundColor = backColor();
+
+            let randdomNum = Math.floor(Math.random()*21);
+            newList.push(randdomNum);
+            i.style.order = randdomNum;
+        }
         let buttonValue = event.target.getAttribute('data__value');
         if(buttonValue==="="){
             screenResult.textContent = computeResult(para);
@@ -241,7 +252,13 @@ document.body.addEventListener('keyup',e =>{
     let butVal = e.key;
 
     for (const i of buttonList) {
+        let fontRand = Math.floor(Math.random()*fontList.length);
+        i.style.fontFamily = fontList[fontRand];
+        i.style.color = backColor();
+
+        i.style.backgroundColor = backColor();
         let randdomNum = Math.floor(Math.random()*21);
+        
         newList.push(randdomNum);
         i.style.order = randdomNum;
     }
@@ -255,6 +272,9 @@ document.body.addEventListener('keyup',e =>{
     }
     else if(e.key=="=" || e.key=='Enter'){
         screenResult.textContent = computeResult(para);
+        const aScreen = document.querySelector('.calculator');
+    aScreen.classList.add("shakeIt");
+    delay        
     }
     else if(e.key=="%"){
         calculDisplayed=calculDisplayed+'%';
