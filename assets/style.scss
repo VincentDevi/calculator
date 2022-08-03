@@ -19,6 +19,13 @@ body{
         background-color: $secondaryColor;
         width: $screenW;
         height: $screenH;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__result{
+            align-self: flex-end;
+
+        }
     }
     
 }

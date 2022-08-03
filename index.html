@@ -15,7 +15,10 @@
     <main class="calculator">
 
     <div class="calculator__screen">
-        <span>
+        <span class="calculator__screen__calcul">
+
+        </span>
+        <span class="calculator__screen__result">
 
         </span>
     </div>
@@ -24,7 +27,7 @@
             
             
             <div class="operation">
-                <button class="operation__row" data__value = "del">AC</button>
+                <button class="operation__row" data__value = "del" data__event="Backspace">AC</button>
                 <button class="operation__row" data__value = " / ">/</button>
                 <button class="operation__row" data__value = " * ">x</button>
                 <button class="operation__row" data__value = " - ">-</button>
@@ -36,7 +39,7 @@
                 <div class="row">
                     <button class="row__op" data__value = " ( ">(</button>
                     <button class="row__op" data__value = " ) ">)</button>
-                    <button class="row__op" data__value = " / ">%</button>
+                    <button class="row__op" data__value = "%">%</button>
                 </div>
                 <div class="row">
                     <button class="row__number" data__value = 9 >9</button>

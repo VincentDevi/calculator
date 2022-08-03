@@ -193,26 +193,63 @@ function computeResult(str){
 
 const buttonList = document.querySelectorAll('button');
 const screen = document.querySelector('span');
+const screenResult = document.querySelector('.calculator__screen__result')
 let para ="";
 for (const aButton of buttonList) {
     aButton.addEventListener('click', event =>{
         let buttonValue = event.target.getAttribute('data__value');
         if(buttonValue==="="){
-            console.log(computeResult(para))
+            screenResult.textContent = computeResult(para);
+        }
+        else if(buttonValue==="%"){
+            para= '('+para+'/100'+')'+'*';
+            screen.textContent = para;
         }
         else if(buttonValue==="del"){
-            para.slice(0, -1);
+            para =para.slice(0, -1);
+            screen.textContent = para;
         }
         else{
-        console.log(buttonValue);
-        para = para+buttonValue;
-        screen.textContent = para;
-        console.log(para);
+            console.log(buttonValue);
+            para = para+buttonValue;
+            screen.textContent = para;
+            console.log(para);
         }
 
     })
 
+
 }
+let listNum = ['0','1','2','3','4','5','6','7','8','9','/','*','-','+','(',')','/'];
+document.body.addEventListener('keyup',e =>{
+    let compteur = 0;
+    let butVal = e.key;
+    if (e.code=="Backspace"){
+        para =para.slice(0, -1);
+        screen.textContent = para;
+    }
+    else if(e.key=="=" || e.key=='Enter'){
+        screenResult.textContent = computeResult(para);
+
+    }
+    else if(e.key=="%"){
+        para = '('+para+'/100'+')'+'*';
+    }
+    else{
+        while(compteur <listNum.length){
+                if(butVal==listNum[compteur]){
+                    para =para+butVal;
+                    screen.textContent = para;
+                    compteur = listNum.length+1;
+                }
+                else{
+                    compteur++;
+                }
+        }
+    }
+  
+   
+})
 
 const getDiv = () =>{
     const divClassList = ['calculator__screen', 'keys', 'operation', 'keys__but', 'row'];

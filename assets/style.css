@@ -65,6 +65,12 @@ body {
   background-color: #ABC9FF;
   width: 100%;
   height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.calculator__screen__result {
+  align-self: flex-end;
 }
 
 .keys {
