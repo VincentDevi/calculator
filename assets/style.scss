@@ -1,6 +1,84 @@
 @import '_reset.scss';
 @import '_variables.scss';
 
+// body{
+//     height: 100vh;
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+    
+// }
+// .calculator{
+//     background-color: #EFEFEF;
+//     box-shadow: 10px 5px 5px $numberColor;
+//     border-radius: 10px;
+//     width: $width;
+//     height: $height;
+//     display: flex;
+//     flex-direction: column;
+
+//     &__screen{
+//         border-radius: 30px;
+//         background-color: $screenColor;
+//         width: $screenW;
+//         height: $screenH;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: space-around;
+//         &__result{
+//             align-self: center;
+
+//         }
+//     }
+    
+// }
+
+// .keys{
+//     display: flex;
+//     flex-direction: row;
+//     &__but{
+//         height: $keysHeight;
+//         width: $keysWidth;
+//     }
+// }
+// .operation{
+//     height: $operationHeight;
+//     width: $operationWidth;
+//     order: 1;
+//     display: flex;
+//     flex-direction: column;
+//     &__row{
+//         height: 20%;
+//         width: 100%;
+//         background-color: $op2Color;
+//     }
+// }
+// .row{
+    
+//     height: $rowHeight;
+//     display: flex;
+//     &__op{
+//         background-color: $opColor;
+//     }
+//     &__number{
+//         background-color: $numberColor;
+//     }
+    
+// }
+// button{
+//     background-color: $primaryColor;
+//     width: $butWidth;
+//     border-radius: 30px;
+// }
+
+// #point{
+//     order: -1;
+// }
+
+
+
 body{
     height: 100vh;
     width: 100%;
@@ -10,7 +88,6 @@ body{
     
 }
 .calculator{
-    background-color: #EFEFEF;
     box-shadow: 10px 5px 5px $numberColor;
     border-radius: 10px;
     width: $width;
@@ -36,43 +113,13 @@ body{
 }
 
 .keys{
+    height: 100%;
     display: flex;
     flex-direction: row;
-    &__but{
-        height: $keysHeight;
-        width: $keysWidth;
-    }
-}
-.operation{
-    height: $operationHeight;
-    width: $operationWidth;
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    &__row{
+    flex-wrap: wrap;
+    &__button{
+        flex-basis: 25%;
         height: 20%;
-        width: 100%;
-        background-color: $op2Color;
+        
     }
-}
-.row{
-    
-    height: $rowHeight;
-    display: flex;
-    &__op{
-        background-color: $opColor;
-    }
-    &__number{
-        background-color: $numberColor;
-    }
-    
-}
-button{
-    background-color: $primaryColor;
-    width: $butWidth;
-    border-radius: 30px;
-}
-
-#point{
-    order: -1;
 }

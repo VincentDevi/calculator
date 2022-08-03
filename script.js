@@ -184,6 +184,19 @@
 
 //     return str;
 //   }
+function randomNum() {
+    return Math.floor(Math.random()*256);
+}
+
+
+function backColor() {
+    let greenC = randomNum();
+    let bleuC = randomNum();
+    let redC = randomNum();
+    let colorBack = "rgb("+ greenC+ ", "+bleuC+","+redC+" )";
+    return colorBack;
+}
+
 
 function computeResult(str){
     return Function('return ' + str)()
@@ -223,8 +236,17 @@ for (const aButton of buttonList) {
 }
 let listNum = ['0','1','2','3','4','5','6','7','8','9','/','*','-','+','(',')','/'];
 document.body.addEventListener('keyup',e =>{
+    let newList=[];
     let compteur = 0;
     let butVal = e.key;
+
+    for (const i of buttonList) {
+        let randdomNum = Math.floor(Math.random()*21);
+        newList.push(randdomNum);
+        i.style.order = randdomNum;
+    }
+
+
 
     if (e.code=="Backspace"){
         para =para.slice(0, -1);
@@ -254,6 +276,7 @@ document.body.addEventListener('keyup',e =>{
                 }
         }
     }
+
   
    
 })
