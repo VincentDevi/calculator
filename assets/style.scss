@@ -10,20 +10,25 @@ body{
     
 }
 .calculator{
+    background-color: #EFEFEF;
+    box-shadow: 10px 5px 5px $numberColor;
+    border-radius: 10px;
     width: $width;
     height: $height;
     display: flex;
     flex-direction: column;
 
     &__screen{
-        background-color: $secondaryColor;
+        border-radius: 30px;
+        background-color: $screenColor;
         width: $screenW;
         height: $screenH;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: space-around;
         &__result{
-            align-self: flex-end;
+            align-self: center;
 
         }
     }
@@ -47,7 +52,7 @@ body{
     &__row{
         height: 20%;
         width: 100%;
-        background-color: $thirdsColor;
+        background-color: $op2Color;
     }
 }
 .row{
@@ -55,11 +60,19 @@ body{
     height: $rowHeight;
     display: flex;
     &__op{
-        background-color: $thirdsColor;
+        background-color: $opColor;
+    }
+    &__number{
+        background-color: $numberColor;
     }
     
 }
 button{
     background-color: $primaryColor;
     width: $butWidth;
+    border-radius: 30px;
+}
+
+#point{
+    order: -1;
 }

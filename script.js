@@ -195,6 +195,7 @@ const buttonList = document.querySelectorAll('button');
 const screen = document.querySelector('span');
 const screenResult = document.querySelector('.calculator__screen__result')
 let para ="";
+let calculDisplayed="";
 for (const aButton of buttonList) {
     aButton.addEventListener('click', event =>{
         let buttonValue = event.target.getAttribute('data__value');
@@ -224,22 +225,28 @@ let listNum = ['0','1','2','3','4','5','6','7','8','9','/','*','-','+','(',')','
 document.body.addEventListener('keyup',e =>{
     let compteur = 0;
     let butVal = e.key;
+
     if (e.code=="Backspace"){
         para =para.slice(0, -1);
-        screen.textContent = para;
+        calculDisplayed=calculDisplayed.slice(0, -1);
+        screen.textContent = calculDisplayed;
     }
     else if(e.key=="=" || e.key=='Enter'){
         screenResult.textContent = computeResult(para);
-
     }
     else if(e.key=="%"){
+        calculDisplayed=calculDisplayed+'%';
+        screen.textContent = calculDisplayed;
         para = '('+para+'/100'+')'+'*';
+        console.log(para);
+
     }
     else{
         while(compteur <listNum.length){
                 if(butVal==listNum[compteur]){
+                    calculDisplayed=calculDisplayed+butVal;
                     para =para+butVal;
-                    screen.textContent = para;
+                    screen.textContent = calculDisplayed;
                     compteur = listNum.length+1;
                 }
                 else{
