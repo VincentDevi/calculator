@@ -1,323 +1,130 @@
 
+// global variables
+const fontList =["Alegreya Sans SC', sans-serif","'Bad Script', cursive", "'Bebas Neue', cursive", "'Chakra Petch', sans-serif","'Mouse Memoirs', sans-serif", "'Roboto', sans-serif", "'Square Peg', cursive","'Uchen', serif"];
+// list of all the font that will be displayed later
+const listNum = ['0','1','2','3','4','5','6','7','8','9','/','*','-','+','(',')','/','Shift','Backspace','=','Enter','%']; // list of all the button that can be pressed
 
-// const getDivision =() => {
-//     const main = document.querySelector("main");
-//     main.className = "calculator";
-
-//     const divScreen = document.createElement("div");
-//     divScreen.className = "calculator__screen";
-//     main.appendChild(divScreen);
-
-
-//     const divKeys = document.createElement("div");
-//     divKeys.className = "keys";
-//     main.appendChild(divKeys);
-
-//     const opop = document.createElement("div");
-//     opop.className = "keys__operation"
-//     divKeys.appendChild(opop);
-    
-//     const divKeyNum = document.createElement("div");
-//     divKeyNum.className = "keys__number";
-//     divKeys.appendChild(divKeyNum);
-
-//     for (let i=0; i<5; i++){
-//         const divRow = document.createElement("div");
-//         divRow.className = "keys__number__row";
-//         divKeyNum.appendChild(divRow);
-//     }
+// const that take element from the DOM
+const buttonList = document.querySelectorAll('button');
+const screen = document.querySelector('span');
+const screenResult = document.querySelector('.calculator__screen__result')
 
 
-  
-// }
+ // Variables declaration
+    // string
+let para =""; // calcul that will be displayed on  the screen
+let result=''; // calcul that will be done behind the scene
 
 
-// function to give attribute button and  value to an element.
-// const getAttribute = (element, index) =>{
-//     element.setAttribute('type', 'button');
-//     element.setAttribute('value', index);
-//     return element
-// }
-
-// // fucntion to create Number, "." and "="
-// const addButtonNumber = () =>{
-//     const num = document.querySelector('.keys__number');
-
-//     const row1List = ["(", ")", "%"];
-//     for (const j of row1List) {
-//         const but = document.createElement("input");
-//         const attriElement = getAttribute(but, j);
-//         let toAdd = num.children[0];
-//         toAdd.appendChild(attriElement);
-//     }
-//     const row5List = ["0",".","="];
-//     for (const h of row5List) {
-//         const but = document.createElement("input");
-//         const attriElement = getAttribute(but, h);
-//         if (h==="."){
-//             but.setAttribute("data_number",h);
-
-//         }
-//         else{
-
-//         }
-//         let toAdd = num.children[4];
-//         toAdd.appendChild(attriElement);
-//     }
-
-
-//     for (let i =1; i<10;i++){
-//         const but = document.createElement("input");
-//         but.setAttribute("data_number",i);
-//         const attriElement = getAttribute(but, i);
-
-//         if (i<4){
-//             let toAdd = num.children[1];
-//             toAdd.appendChild(attriElement);
-
-//         }
-//         else if (i>3 && i<7) {
-//             let toAdd = num.children[2];
-//             toAdd.appendChild(attriElement);
-
-//         }
-//         else{
-//             let toAdd= num.children[3];
-//             toAdd.appendChild(attriElement);
-
-//         }
-        
-        
-//     }
-
-// }
-
-// // function to create Operation
-// const getOperation = () =>{
-//     const operation = document.querySelector('.keys__operation')
-//     const operationList = ['CE', '/', '*', '-', '+'];
-//     for (let i =0;i<operationList.length;i++ ){
-//         const ope = document.createElement("input");
-//         const attriOperation = getAttribute(ope, operationList[i]);
-//         operation.appendChild(attriOperation);
-//     }
-// }
-// getDivision();
-// addButtonNumber();
-// getOperation();
-
-
-
-// const buttonsList = document.querySelectorAll("input");
-// liste =[];
-// liste1=[];
-// for (const button of buttonsList) {
-//     let a =0;
-//         button.addEventListener('click',event =>{
-//             a=event.target.value;
-
-//             let b = event.target;
-//             if(b.hasAttribute('data_number')){
-//                 liste1.push(a);
-//                 console.log(liste1);
-//             }
-//             else{
-//                 let mmm = Number( liste1.join("") );
-//                 console.log(mmm);
-//                 liste.push(mmm);
-//                 console.log(liste);
-//                 liste1 =[];
-//                 console.log(liste1);
-//                 let ope = a;
-//                 console.log(ope);
-//                 if (liste.length>1){
-//                     if( ope==="+"){
-//                     let result= liste[0] +liste[1];
-//                     console.log(result);
-//                     }
-//                     else if(ope ==="-"){
-//                         let result = liste[0]-liste[1];
-//                         console.log(result);
-
-//                     }
-//                     else if(ope ==="/"){
-//                         let result=liste[0]/liste[1];
-//                         console.log(result);
-
-//                     }
-//                     else if (ope==="*"){
-//                         let result=liste[0]*liste[1];
-//                         console.log(result);
-
-//                     }
-//                     else{
-//                         let result = (liste[0]*liste[1])/100;
-//                         console.log(result);
-
-//                     }
-//                 }   
-//             }
-
-            
-        
-//         })
-
-// }
-// const buttonList = document.querySelectorAll("input");
-// let result= "";
-// for (const butt of buttonList) {
-//     butt.addEventListener('click',event =>{
-//         let val = event.target.value;
-//         if (val === "="){
-//             computeResult(result);
-//             console.log(result);
-//         }
-//         else{
-//             result = result + val;
-//             console.log(result);
-//         }
-//     })
-// }
-
-
-// function computeResult(str){
-
-//     return str;
-//   }
-function randomNum() {
-    return Math.floor(Math.random()*256);
+// create a random number 
+const randomNum=(num) =>{
+    return Math.floor(Math.random()*num);
 }
 
-
-function backColor() {
-    let greenC = randomNum();
-    let bleuC = randomNum();
-    let redC = randomNum();
-    let colorBack = "rgb("+ greenC+ ", "+bleuC+","+redC+" )";
-    return colorBack;
+const backColor=() =>{
+    const green = randomNum(256);
+    const bleu = randomNum(256);
+    const red = randomNum(256);
+    const color = "rgb("+ green+ ", "+bleu+","+red+" )";
+    return color;
 }
-
 
 function computeResult(str){
     return Function('return ' + str)()
   }
   
-  
-const fontList =["Alegreya Sans SC', sans-serif","'Bad Script', cursive", "'Bebas Neue', cursive", "'Chakra Petch', sans-serif","'Mouse Memoirs', sans-serif", "'Roboto', sans-serif", "'Square Peg', cursive","'Uchen', serif"];
-const buttonList = document.querySelectorAll('button');
-const screen = document.querySelector('span');
-const screenResult = document.querySelector('.calculator__screen__result')
-let para ="";
-let calculDisplayed="";
+
+// functions
+
+
+  // functions to style a button
+const setSTyle = (element,font) =>{
+    element.style.fontFamily =font;
+    element.style.color = backColor();
+    element.style.backgroundColor = backColor();
+    element.style.order = randomNum(21);
+}
+const setContent = (element,content) =>{
+    element.textContent = content;
+}
+
+const setPercentage = (num) =>{
+    const result = '('+num+'/100'+')'+'*';
+    return result;
+}
+const setConcat = (str,toBeAdded) =>{
+    return str+toBeAdded;
+}
+
+
+
+
+// event on all buttons
+
 for (const aButton of buttonList) {
     aButton.addEventListener('click', event =>{
-        let newList=[];
-        for (const i of buttonList) {
-            let fontRand = Math.floor(Math.random()*fontList.length);
-            i.style.fontFamily = fontList[fontRand];
-            i.style.color = backColor();
-            i.style.backgroundColor = backColor();
-
-            let randdomNum = Math.floor(Math.random()*21);
-            newList.push(randdomNum);
-            i.style.order = randdomNum;
-        }
         let buttonValue = event.target.getAttribute('data__value');
+
+        for (const i of buttonList) {
+            let index =randomNum(fontList.length);
+            setSTyle(i,fontList[index]);   
+        }
         if(buttonValue==="="){
-            screenResult.textContent = computeResult(para);
+            result=computeResult(result)
+            para=result;
+            
         }
         else if(buttonValue==="%"){
-            para= '('+para+'/100'+')'+'*';
-            screen.textContent = para;
+            result= setPercentage(result)
+            para = para + '%';
         }
         else if(buttonValue==="del"){
-            para =para.slice(0, -1);
-            screen.textContent = para;
+            result= '';
+            para ='';
         }
         else{
-            console.log(buttonValue);
-            para = para+buttonValue;
-            screen.textContent = para;
-            console.log(para);
+            result= setConcat(result,buttonValue);
+            para= setConcat(para,buttonValue);
         }
-
+        setContent(screen,para);
     })
-
-
 }
-let listNum = ['0','1','2','3','4','5','6','7','8','9','/','*','-','+','(',')','/'];
+
+
 document.body.addEventListener('keyup',e =>{
-    let newList=[];
-    let compteur = 0;
-    let butVal = e.key;
-
-    for (const i of buttonList) {
-        let fontRand = Math.floor(Math.random()*fontList.length);
-        i.style.fontFamily = fontList[fontRand];
-        i.style.color = backColor();
-
-        i.style.backgroundColor = backColor();
-        let randdomNum = Math.floor(Math.random()*21);
-        
-        newList.push(randdomNum);
-        i.style.order = randdomNum;
-    }
+    let valuePressed = e.key;
 
 
+    let check = listNum.includes(valuePressed);
+    if(check){
+        if(valuePressed==="=" || valuePressed==='Enter'){
+            result=computeResult(result)
+            para=result;
+            
+        }
+        else if(valuePressed==="%"){
+            result= setPercentage(result)
+            para = para + '%';
+        }
+        else if(valuePressed==="Backspace"){
+            result= '';
+            para ='';
+        }
+        else if (valuePressed==='Shift'){
 
-    if (e.code=="Backspace"){
-        para =para.slice(0, -1);
-        calculDisplayed=calculDisplayed.slice(0, -1);
-        screen.textContent = calculDisplayed;
-    }
-    else if(e.key=="=" || e.key=='Enter'){
-        screenResult.textContent = computeResult(para);
-        const aScreen = document.querySelector('.calculator');
-    aScreen.classList.add("shakeIt");
-    delay        
-    }
-    else if(e.key=="%"){
-        calculDisplayed=calculDisplayed+'%';
-        screen.textContent = calculDisplayed;
-        para = '('+para+'/100'+')'+'*';
-        console.log(para);
-
+        }
+        else{
+            result= setConcat(result,valuePressed);
+            para= setConcat(para,valuePressed);
+        }
+        setContent(screen,para);
     }
     else{
-        while(compteur <listNum.length){
-                if(butVal==listNum[compteur]){
-                    calculDisplayed=calculDisplayed+butVal;
-                    para =para+butVal;
-                    screen.textContent = calculDisplayed;
-                    compteur = listNum.length+1;
-                }
-                else{
-                    compteur++;
-                }
-        }
-    }
-
-  
-   
+        alert('please press a number or an operation');
+    }   
 })
 
-const getDiv = () =>{
-    const divClassList = ['calculator__screen', 'keys', 'operation', 'keys__but', 'row'];
-    for (let i =0; i<divClassList.length; i++){
-        const nameClass = divClassList[i];
-        if(nameClass==="row"){
-            for (let j = 0; j < 4; j++){
-                const div = document.createElement('div');
-                div.className = nameClass;
-
-            }
-        }
-        else{
-            const div = document.createElement('div');
-            div.className = nameClass;
-        }
-    }
-}
+  
 
 
   
