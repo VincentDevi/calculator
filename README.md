@@ -1,5 +1,5 @@
 # calculator
-* One of my first project in JavaScript
+* One of my first project with JavaScript
 
 ## Link to the actual site
 [calculator](https://vincentdevi.github.io/calculator/)
