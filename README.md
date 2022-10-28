@@ -27,5 +27,8 @@
 
 ### If you click on the calculator, there is a little surprise for you ...
 
+![calculator](calculator.png)
+![calculator-clicked](calculator-clicked.png)
+
 
 
